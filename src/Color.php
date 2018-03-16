@@ -4,12 +4,12 @@
 
 namespace Keyes\Utils;
 
-use Nette,
-	Andweb;
+use Keyes;
 
 
 /**
  * Color object
+ * @package Colorfull
  */
 class Color
 {
@@ -36,22 +36,42 @@ class Color
 	const GREEN = 0b010;
 	const BLUE  = 0b001;
 
+	/**
+	 * Map color abbreviation to flag
+	 *
+	 * @var array
+	 */
 	protected static $colorMap = [
 		'r' => self::RED,
 		'g' => self::GREEN, 
 		'b' => self::BLUE,
 	];
 
+	/**
+	 * Limits
+	 *
+	 * @var integer
+	 */
 	protected static $minDifference = 500;
 	protected static $minBrightness = 125;
 	protected static $minLuminosity = 5;
 	protected static $minDistance   = 250;
 
+	/**
+	 * Default contrastous colors [black, white]
+	 *
+	 * @var array
+	 */
 	protected static $defaultContrastousColors = [
 		[0,0,0],
 		[255,255,255],
 	];
 
+	/**
+	 * @param integer $r
+	 * @param integer $g
+	 * @param integer $b
+	 */
 	public function __construct($r, $g, $b)
 	{
 		$this->setRed($r);
@@ -81,7 +101,7 @@ class Color
 	{
 		$name = String::lower($name);
 		if(!array_key_exists($name, self::$namedColorsMap))
-			throw new Nette\InvalidArgumentException(sprintf("Undefined color name '%s'", $name));
+			throw new \InvalidArgumentException(sprintf("Undefined color name '%s'", $name));
 		list($r, $g, $b) = Arrays::get(self::$namedColorsMap, $name);
 		return new static($r, $g, $b);
 	}
@@ -302,8 +322,8 @@ class Color
 
 	/**
 	 * Get color
-	 * @param  [type] $percent [description]
-	 * @return [type]          [description]
+	 * @param  float $percent
+	 * @return float
 	 */
 	protected function getPctColorAmount($percent)
 	{

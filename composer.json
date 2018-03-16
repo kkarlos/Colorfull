@@ -1,0 +1,23 @@
+{
+    "name": "keyes/colorfull",
+    "description": "Color utility",
+    "type": "library",
+    "require": {
+        "php": ">=5.6",
+        "keyes/exceptions" : "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Karel Saroch",
+            "email": "karel.saroch@seznam.cz"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Keyes\\Utils\\Color\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
